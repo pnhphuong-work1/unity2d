@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuAction : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void PlayButton_OnClick()
+    {
+        SceneManager.LoadScene("Scene 0 - Start");
+    }
+    public void LoadButton_OnClick()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SettingButton_OnClick()
     {
         
     }
+    public void ExitButton_OnClick()
+    {
+        
+    }
+    
 }
