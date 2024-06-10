@@ -5,11 +5,11 @@ public class MainMenuAction : MonoBehaviour
 {
     public void PlayButton_OnClick()
     {
-        SceneManager.LoadScene("Scene 0 - Start");
+        DataPersistenceManager.Instance.NewGame();
     }
     public void LoadButton_OnClick()
     {
-        
+        DataPersistenceManager.Instance.LoadGame();
     }
     public void SettingButton_OnClick()
     {
