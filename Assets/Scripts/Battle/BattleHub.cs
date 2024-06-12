@@ -18,8 +18,8 @@ public class BattleHub : MonoBehaviour
         hpBar.SetHp((float) levelChar.HP / levelChar.MaxHp);
     }
 
-    public void UpdateHp()
+    public IEnumerator UpdateHp()
     {
-        hpBar.SetHp((float) _levelChar.HP / _levelChar.MaxHp);
+       yield return hpBar.SetHpSmooth((float) _levelChar.HP / _levelChar.MaxHp);
     }
 }

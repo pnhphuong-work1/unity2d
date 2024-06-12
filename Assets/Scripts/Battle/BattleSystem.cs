@@ -69,7 +69,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         bool isFainted = enemyUnit.Char.TakeDame(move, playerUnit.Char);
-        enemyHub.UpdateHp();
+        StartCoroutine(enemyHub.UpdateHp());
         if (isFainted)
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.Char.Base.Name} Fainted");
@@ -89,7 +89,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         bool isFainted = playerUnit.Char.TakeDame(move, enemyUnit.Char);
-        playerHub.UpdateHp();
+        StartCoroutine(playerHub.UpdateHp());
         if (isFainted)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Char.Base.Name} Fainted");
