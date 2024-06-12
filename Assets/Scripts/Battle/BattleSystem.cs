@@ -66,13 +66,16 @@ public class BattleSystem : MonoBehaviour
         var move = playerUnit.Char.Moves[currentMove];
         yield return dialogBox.TypeDialog($"{playerUnit.Char.Base.Name} use {move.Base.Name}");
 
+        playerUnit.PlayAttackAnimation();
         yield return new WaitForSeconds(1f);
 
+        enemyUnit.PlayHitAnimation();
         bool isFainted = enemyUnit.Char.TakeDame(move, playerUnit.Char);
         StartCoroutine(enemyHub.UpdateHp());
         if (isFainted)
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.Char.Base.Name} Fainted");
+            enemyUnit.PlayFaintAnimation();
         }
         else
         {
@@ -84,15 +87,18 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.EnemyMove;
         var move = enemyUnit.Char.GetRandomMove();
-        yield return dialogBox.TypeDialog($"{playerUnit.Char.Base.Name} use {move.Base.Name}");
-
+        yield return dialogBox.TypeDialog($"{enemyUnit.Char.Base.Name} use {move.Base.Name}");
+        
+        enemyUnit.PlayAttackAnimation();
         yield return new WaitForSeconds(1f);
 
+        playerUnit.PlayHitAnimation();
         bool isFainted = playerUnit.Char.TakeDame(move, enemyUnit.Char);
         StartCoroutine(playerHub.UpdateHp());
         if (isFainted)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Char.Base.Name} Fainted");
+            playerUnit.PlayFaintAnimation();
         }
         else
         {
