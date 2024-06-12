@@ -5,5 +5,4 @@ using UnityEngine;
 public class ChangeScene : MonoBehaviour
 {
     public string sceneToLoad;
-    private string currScene = "";
 }
