@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72da27078acd95644971ef61f92e5995, type: 3}
-  m_Name: Defense
+  m_Name: SpecialAttack
   m_EditorClassIdentifier: 
-  name: Defense
+  name: Light Sword
   description: 
   classType: 0
-  power: 50
-  accuracy: 100
-  pp: 0
+  power: 200
+  accuracy: 2
+  pp: 3
