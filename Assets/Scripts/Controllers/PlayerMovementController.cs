@@ -24,7 +24,6 @@ public class PlayerMovementController : MonoBehaviour, IDataPersistence
         {
             dir.x = -1;
             animator.SetInteger("Direction", 3);
-            EncounteredBattle();
         }
         else if (Input.GetKey(KeyCode.D))
         {
@@ -62,9 +61,8 @@ public class PlayerMovementController : MonoBehaviour, IDataPersistence
     //Call this method when the player encounters a battle
     private void EncounteredBattle()
     {
-        if (Random.Range(0, 100) < 10)
+        if (Random.Range(0, 10000) < 5)
         {
-            animator.SetBool("IsMoving", false);
             OnEncounteredBattle();
         }
     }

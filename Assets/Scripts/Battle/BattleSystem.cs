@@ -117,7 +117,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.PlayerAction)
         {
-            HandleActionSelection();
+            StartCoroutine(HandleActionSelection());
         }
         else if (state == BattleState.PlayerMove)
         {
@@ -125,7 +125,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    void HandleActionSelection()
+    IEnumerator HandleActionSelection()
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -149,7 +149,11 @@ public class BattleSystem : MonoBehaviour
             }
             else if (currentAction == 1)
             {
-                //run   
+                //run
+                yield return dialogBox.TypeDialog($"{playerUnit.Char.Base.Name} Run!!");
+            
+                yield return new WaitForSeconds(2f);
+                OnBattleOver!(false);
             }
         }
     }
