@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerMovementController : MonoBehaviour, IDataPersistence
 {
     public float speed;
 
     private Animator animator;
+    public event Action OnEncounteredBattle;
 
     private void Start()
     {
@@ -14,13 +17,14 @@ public class PlayerMovementController : MonoBehaviour, IDataPersistence
     }
 
 
-    private void Update()
+    public void HandleUpdate()
     {
         Vector2 dir = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
         {
             dir.x = -1;
             animator.SetInteger("Direction", 3);
+            EncounteredBattle();
         }
         else if (Input.GetKey(KeyCode.D))
         {
@@ -53,5 +57,15 @@ public class PlayerMovementController : MonoBehaviour, IDataPersistence
     public void SaveData(ref GameData data)
     {
         data.playerPos = this.transform.position;
+    }
+    
+    //Call this method when the player encounters a battle
+    private void EncounteredBattle()
+    {
+        if (Random.Range(0, 100) < 10)
+        {
+            animator.SetBool("IsMoving", false);
+            OnEncounteredBattle();
+        }
     }
 }
