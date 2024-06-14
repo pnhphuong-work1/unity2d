@@ -7,49 +7,53 @@ using Random = UnityEngine.Random;
 public class PlayerMovementController : MonoBehaviour
 {
     public float speed;
-
-    private Animator animator;
+    private bool _isMoving;
+    private Vector2 _movement;
+    private Animator _animator;
+    
     public event Action OnEncounteredBattle;
 
-    private void Start()
+    private void Awake()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
 
-    public void Update()
+    public void HandleUpdate()
     {
-        Vector2 dir = Vector2.zero;
-        if (Input.GetKey(KeyCode.W))
+        if (!_isMoving)
         {
-            dir.y = 1;
-            animator.SetInteger("Direction", 0);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            dir.x = -1;
-            animator.SetInteger("Direction", 1);
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            dir.y = -1;
-            animator.SetInteger("Direction", 2);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            dir.x = 1;
-            animator.SetInteger("Direction", 3);
+            _movement.x = Input.GetAxisRaw("Horizontal");
+            _movement.y = Input.GetAxisRaw("Vertical");
+            if (_movement != Vector2.zero)
+            {
+                var targetPos = transform.position;
+                targetPos.x += _movement.x;
+                targetPos.y += _movement.y;
+                _animator.SetFloat("X", _movement.x);
+                _animator.SetFloat("Y", _movement.y);
+                
+                StartCoroutine(Move(targetPos));
+            }
         }
 
-        dir.Normalize();
-        animator.SetBool("IsMoving", dir.magnitude > 0);
-
-        GetComponent<Rigidbody2D>().velocity = speed * dir;
+        EncounterBattle();
+        _animator.SetBool("IsMoving", _isMoving);
     }
     
+    IEnumerator Move(Vector3 targetPos)
+    {
+        _isMoving = true;
+        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed*Time.fixedDeltaTime);
+            yield return null;
+        }
+        transform.position = targetPos;
+        _isMoving = false;
+    }
     //Call this method when the player encounters a battle
-    private void EncounteredBattle()
+    private void EncounterBattle()
     {
         if (Random.Range(0, 10000) < 5)
         {
