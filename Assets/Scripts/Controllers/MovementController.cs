@@ -10,10 +10,16 @@ public class MovementController : MonoBehaviour
     public float speed;
     private bool _isMoving;
     private Vector2 _charPos;
+    public VectorValue _startingPos;
     
     private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        transform.position = _startingPos.inputVector;
     }
 
     private void Update()
