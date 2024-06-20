@@ -14,7 +14,7 @@ public class Character
     {
         Base = charBase;
         Level = pLevel;
-        HP = MaxHp;
+        HP = PlayerPrefs.GetInt("CurrentHP", MaxHp);
         //Generated move
         Moves = new List<Move>();
         foreach (var move in Base.LearnableMoves)

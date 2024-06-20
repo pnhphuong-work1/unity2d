@@ -76,6 +76,8 @@ public class BattleSystem : MonoBehaviour
         if (isFainted)
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.Char.Base.Name} Fainted");
+            PlayerPrefs.SetInt("CurrentHP", playerUnit.Char.HP);
+            PlayerPrefs.Save();
             enemyUnit.PlayFaintAnimation();
             
             yield return new WaitForSeconds(2f);
@@ -102,6 +104,7 @@ public class BattleSystem : MonoBehaviour
         if (isFainted)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Char.Base.Name} Fainted");
+            PlayerPrefs.SetInt("CurrentHP", playerUnit.Char.MaxHp);
             playerUnit.PlayFaintAnimation();
             
             yield return new WaitForSeconds(2f);

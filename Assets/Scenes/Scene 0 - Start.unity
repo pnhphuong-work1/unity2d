@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1952e759730534196ff58b0f4c1c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovementController: {fileID: 0}
+  playerMovementController: {fileID: 1658104604}
   battleSystem: {fileID: 1971438597}
   worldCamera: {fileID: 629377526}
 --- !u!4 &53758853
@@ -8156,7 +8156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629377524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0106399, y: -0.95247006, z: -20.000172}
+  m_LocalPosition: {x: 0.010327297, y: -0.95247006, z: -20.000172}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14298,7 +14298,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -208.99997, y: 242}
+  m_AnchoredPosition: {x: -208.99994, y: 242}
   m_SizeDelta: {x: -638.64, y: 175.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1733199606
@@ -15380,7 +15380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1971438596
 Transform:
   m_ObjectHideFlags: 0
