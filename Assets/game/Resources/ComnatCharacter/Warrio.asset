@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Kight
   description: An kight that going to find who is he
-  frontSprite: {fileID: 3959732604684143647, guid: 543f35ebf48d869488a91d472f1a5810, type: 3}
-  backSprite: {fileID: 3959732604684143647, guid: 543f35ebf48d869488a91d472f1a5810, type: 3}
+  frontSprite: {fileID: -7608346047182940735, guid: 543f35ebf48d869488a91d472f1a5810, type: 3}
+  backSprite: {fileID: -4370711049410482279, guid: 543f35ebf48d869488a91d472f1a5810, type: 3}
   classType: 0
   maxHp: 100
   attach: 20

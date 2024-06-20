@@ -19,7 +19,7 @@ public class PlayerMovementController : MonoBehaviour
     }
 
 
-    public void HandleUpdate()
+    public void Update()
     {
         if (!_isMoving)
         {
@@ -33,31 +33,33 @@ public class PlayerMovementController : MonoBehaviour
                 _animator.SetFloat("X", _movement.x);
                 _animator.SetFloat("Y", _movement.y);
                 
-                StartCoroutine(Move(targetPos));
+                //StartCoroutine(Move(targetPos));
             }
         }
 
-        EncounterBattle();
+        //EncounterBattle();
         _animator.SetBool("IsMoving", _isMoving);
     }
     
-    IEnumerator Move(Vector3 targetPos)
-    {
-        _isMoving = true;
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed*Time.fixedDeltaTime);
-            yield return null;
-        }
-        transform.position = targetPos;
-        _isMoving = false;
-    }
+    // IEnumerator Move(Vector3 targetPos)
+    // {
+    //     _isMoving = true;
+    //     while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+    //     {
+    //         //transform.position = Vector3.MoveTowards(transform.position, targetPos, speed*Time.fixedDeltaTime);
+    //         GetComponent<Rigidbody2D>().velocity = targetPos * speed;
+    //         yield return null;
+    //     }
+    //     //transform.position = targetPos;
+    //     GetComponent<Rigidbody2D>().velocity = targetPos * speed;
+    //     _isMoving = false;
+    // }
     //Call this method when the player encounters a battle
-    private void EncounterBattle()
-    {
-        if (Random.Range(0, 10000) < 5)
-        {
-            OnEncounteredBattle();
-        }
-    }
+    // private void EncounterBattle()
+    // {
+    //     if (Random.Range(0, 10000) < 5)
+    //     {
+    //         OnEncounteredBattle();
+    //     }
+    // }
 }

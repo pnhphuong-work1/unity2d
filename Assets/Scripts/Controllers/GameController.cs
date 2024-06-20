@@ -11,7 +11,7 @@ public enum GameState
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] PlayerMovementController playerMovementController;
+    [SerializeField] GameObject Player;
     [SerializeField] BattleSystem battleSystem;
     [SerializeField] Camera worldCamera;
     
@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        playerMovementController.OnEncounteredBattle += StartBattle;
+        Player.GetComponent<PlayerMovementController>().OnEncounteredBattle += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
     }
     
@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
     {
         if (state == GameState.FreeRoam)
         {
-            playerMovementController.HandleUpdate();
+            Player.GetComponent<PlayerMovementController>().Update();
         }
         else if (state == GameState.Battle)
         {

@@ -39,7 +39,7 @@ public class BattleSystem : MonoBehaviour
         
         dialogBox.SetMoveNames(playerUnit.Char.Moves);
 
-        yield return dialogBox.TypeDialog($"A enemy {enemyUnit.Char.Base.Name} appeared");
+        yield return dialogBox.TypeDialog($"An enemy {enemyUnit.Char.Base.Name} appeared");
 
         yield return new WaitForSeconds(1f);
 
