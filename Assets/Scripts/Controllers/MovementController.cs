@@ -11,6 +11,8 @@ public class MovementController : MonoBehaviour
     private bool _isMoving;
     private Vector2 _charPos;
     public VectorValue _startingPos;
+
+    private bool dialogueIsPlaying = false;
     
     private void Awake()
     {
@@ -20,17 +22,25 @@ public class MovementController : MonoBehaviour
     private void Start()
     {
         transform.position = _startingPos.inputVector;
+        _startingPos.inputVector = Vector2.zero;
     }
 
     private void Update()
     {
+        if (DialogueManager.GetInstance() != null)
+        {
+            dialogueIsPlaying = DialogueManager.GetInstance().dialogueIsPlaying;
+        }
+        if (dialogueIsPlaying)
+        {
+            return;
+        }
         Vector2 movementVector = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
         {
             movementVector.x = -1;
             animator.SetFloat("X", -1f);
             animator.SetFloat("Y", 0f);
-
         }
         else if (Input.GetKey(KeyCode.D))
         {

@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     public string sceneToLoad;
-    public VectorValue initialSpawn;
-    public VectorValue expectedSpawn;
+    public VectorValue locationSpawn;
+    public VectorValue startingSpawn;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            expectedSpawn.inputVector = initialSpawn.inputVector;
+            startingSpawn.inputVector = locationSpawn.inputVector;
             SceneManager.LoadScene(sceneToLoad);
         }
     }

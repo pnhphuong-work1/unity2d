@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42392748d7fff74b82770555f0aa322, type: 3}
   m_Name: MazeRavineFromNewIsland
   m_EditorClassIdentifier: 
-  inputVector: {x: -9.13, y: -1.76}
+  inputVector: {x: -7, y: -1.75}
