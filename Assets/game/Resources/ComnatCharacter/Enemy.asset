@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a206f7668719ef4fb5dac8491acd8e0, type: 3}
   m_Name: Enemy
   m_EditorClassIdentifier: 
-  name: Dragon
+  name: Orc
   description: 
-  frontSprite: {fileID: 21300000, guid: d819d29c71518d340b52028b17af51c2, type: 3}
-  backSprite: {fileID: 21300000, guid: d819d29c71518d340b52028b17af51c2, type: 3}
+  frontSprite: {fileID: -3628525783814434719, guid: fcf502ee9fdab1341a4b0fa9ce5c0c20, type: 3}
+  backSprite: {fileID: -3628525783814434719, guid: fcf502ee9fdab1341a4b0fa9ce5c0c20, type: 3}
   classType: 2
   maxHp: 200
   attach: 2

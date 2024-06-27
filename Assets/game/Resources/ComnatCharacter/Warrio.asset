@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a206f7668719ef4fb5dac8491acd8e0, type: 3}
   m_Name: Warrio
   m_EditorClassIdentifier: 
-  name: Kight
+  name: Friel
   description: An kight that going to find who is he
-  frontSprite: {fileID: -7608346047182940735, guid: 543f35ebf48d869488a91d472f1a5810, type: 3}
+  frontSprite: {fileID: 3959732604684143647, guid: 543f35ebf48d869488a91d472f1a5810, type: 3}
   backSprite: {fileID: -4370711049410482279, guid: 543f35ebf48d869488a91d472f1a5810, type: 3}
   classType: 0
   maxHp: 100
@@ -28,5 +28,3 @@ MonoBehaviour:
     level: 1
   - moveBase: {fileID: 11400000, guid: cb1dfa77cb8032b429f673fe42722c9b, type: 2}
     level: 1
-  - moveBase: {fileID: 11400000, guid: 02e60db3df1078c4381d63a86c0f0e3a, type: 2}
-    level: 2

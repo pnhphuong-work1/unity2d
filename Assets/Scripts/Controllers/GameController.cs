@@ -15,8 +15,10 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] BattleSystem battleSystem;
     [SerializeField] Camera worldCamera;
+    //[SerializeField] Camera battleCamera;
     public bool isMoveable { get; private set; }
-    GameState state;
+    public bool enemyFainted { get; set; } = false;
+    public GameState state;
     private static GameController instance;
     
     private void Awake() 
@@ -43,6 +45,7 @@ public class GameController : MonoBehaviour
         state = GameState.Battle;
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
+        //battleCamera.gameObject.SetActive(true);
         battleSystem.StartBattle();
     }
     
@@ -50,6 +53,7 @@ public class GameController : MonoBehaviour
     {
         state = GameState.FreeRoam;
         battleSystem.gameObject.SetActive(false);
+        //battleCamera.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);
     }
 

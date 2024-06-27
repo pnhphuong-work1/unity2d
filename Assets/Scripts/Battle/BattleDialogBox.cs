@@ -10,11 +10,13 @@ public class BattleDialogBox : MonoBehaviour
     
     [SerializeField] TextMeshProUGUI dialogText;
     [SerializeField] GameObject acionSelector;
+    [SerializeField] GameObject answerSelector;
     [SerializeField] GameObject moveSelector;
     [SerializeField] GameObject moveDetails;
 
     [SerializeField] List<TextMeshProUGUI> actionText;
     [SerializeField] List<TextMeshProUGUI> moveText;
+    [SerializeField] List<TextMeshProUGUI> answerText;
     [SerializeField] TextMeshProUGUI ppText;
 
     public void SetDialog(string dialog)
@@ -40,6 +42,10 @@ public class BattleDialogBox : MonoBehaviour
     public void EnableActionSelector(bool enable)
     {
         acionSelector.SetActive(enable);
+    }
+    public void EnableAnswerSelector(bool enable)
+    {
+        answerSelector.SetActive(enable);
     }
     
     public void EnableMoveSelector(bool enable)
@@ -71,6 +77,16 @@ public class BattleDialogBox : MonoBehaviour
 
         ppText.text = $"PP {move.PP}/{move.Base.PP}";
     }
+    public void UpdateAnswerSelection(int selectedMove)
+        {
+            for (int i = 0; i < answerText.Count; ++i)
+            {
+                if (i == selectedMove)
+                    answerText[i].color = highlightColor;
+                else
+                    answerText[i].color = Color.black;
+            }
+        }
 
     public void SetMoveNames(List<Move> moves)
     {
@@ -81,6 +97,16 @@ public class BattleDialogBox : MonoBehaviour
             else
                 moveText[i].text = "-";
         }
-            
     }
+    public void SetAnswers(List<string> answer)
+    {
+        for (int i = 0; i < answerText.Count; ++i)
+        {
+            if (i < answer.Count)
+                answerText[i].text = answer[i];
+            else
+                answerText[i].text = "-";
+        }
+    }
+    
 }

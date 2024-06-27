@@ -13,7 +13,7 @@ public class MovementController : MonoBehaviour
     private Vector2 _charPos;
     public VectorValue _startingPos;
 
-    private bool dialogueIsPlaying = false;
+    //private bool dialogueIsPlaying = false;
     private bool isMoveable = true;
     
     public event Action OnEncounteredBattle;
@@ -26,8 +26,7 @@ public class MovementController : MonoBehaviour
     private void Start()
     {
         transform.position = _startingPos.inputVector;
-        _startingPos.inputVector = Vector2.zero;
-        
+        //_startingPos.inputVector = Vector2.zero;
     }
 
     private void Update()
@@ -73,20 +72,15 @@ public class MovementController : MonoBehaviour
             animator.SetFloat("X", 0f);
         }
         
-        EncounterBattle();
-        
         movementVector.Normalize();
         animator.SetBool("IsMoving", movementVector.magnitude > 0);
 
         GetComponent<Rigidbody2D>().velocity = movementVector * speed;
     }
 
-    private void EncounterBattle()
+    public void EncounterBattle()
     {
-        if (Random.Range(0, 10000) < 5)
-        {
-            OnEncounteredBattle();
-        }
+        OnEncounteredBattle();
     }
     
     
