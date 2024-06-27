@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class MovementController : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class MovementController : MonoBehaviour
     public VectorValue _startingPos;
 
     private bool dialogueIsPlaying = false;
+    private bool isMoveable = true;
+    
+    public event Action OnEncounteredBattle;
     
     private void Awake()
     {
@@ -23,18 +27,24 @@ public class MovementController : MonoBehaviour
     {
         transform.position = _startingPos.inputVector;
         _startingPos.inputVector = Vector2.zero;
+        
     }
 
     private void Update()
     {
         if (DialogueManager.GetInstance() != null)
         {
-            dialogueIsPlaying = DialogueManager.GetInstance().dialogueIsPlaying;
+            isMoveable = !DialogueManager.GetInstance().dialogueIsPlaying;
         }
-        if (dialogueIsPlaying)
+        if (GameController.GetInstance() != null)
+        {
+            isMoveable = GameController.GetInstance().isMoveable;
+        }
+        if (!isMoveable)
         {
             return;
         }
+        
         Vector2 movementVector = Vector2.zero;
         if (Input.GetKey(KeyCode.A))
         {
@@ -63,12 +73,21 @@ public class MovementController : MonoBehaviour
             animator.SetFloat("X", 0f);
         }
         
+        EncounterBattle();
+        
         movementVector.Normalize();
         animator.SetBool("IsMoving", movementVector.magnitude > 0);
 
         GetComponent<Rigidbody2D>().velocity = movementVector * speed;
     }
 
+    private void EncounterBattle()
+    {
+        if (Random.Range(0, 10000) < 5)
+        {
+            OnEncounteredBattle();
+        }
+    }
     
     
 }
