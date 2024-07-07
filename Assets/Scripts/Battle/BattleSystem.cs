@@ -25,6 +25,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHub playerHub;
     [SerializeField] BattleHub enemyHub;
     [SerializeField] BattleDialogBox dialogBox;
+    [SerializeField] private string enemyName;
 
     public event Action<bool> OnBattleOver;
     BattleState state;
@@ -116,8 +117,10 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(enemyHub.UpdateHp());
         if (isFainted)
         {
+            GameEventsManager.instance.miscEvents.EnemyDefeated(enemyName);
             yield return dialogBox.TypeDialog($"{enemyUnit.Char.Base.Name} Fainted");
-            GameController.GetInstance().enemyFainted = true;
+            //Send enemy defeated event
+            
             PlayerPrefs.SetInt("CurrentHP", playerUnit.Char.HP);
             PlayerPrefs.Save();
             enemyUnit.PlayFaintAnimation();
@@ -204,7 +207,6 @@ public class BattleSystem : MonoBehaviour
         if (isFainted)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Char.Base.Name} Fainted");
-            GameController.GetInstance().enemyFainted = false;
             PlayerPrefs.SetInt("CurrentHP", playerUnit.Char.MaxHp);
             playerUnit.PlayFaintAnimation();
             

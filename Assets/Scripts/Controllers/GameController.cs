@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera;
     //[SerializeField] Camera battleCamera;
     public bool isMoveable { get; private set; }
-    public bool enemyFainted { get; set; } = false;
     public GameState state;
     private static GameController instance;
     

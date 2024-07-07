@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Attack
   description: 
   classType: 0
-  power: 10
+  power: 100
   accuracy: 100
   pp: 0
