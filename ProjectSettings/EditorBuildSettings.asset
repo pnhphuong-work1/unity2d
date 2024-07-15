@@ -5,10 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: 3776fa08768481d4fa66941ab8d59f3b
   - enabled: 1
     path: Assets/Scenes/Scene 0 - Start.unity
     guid: 3ebb3812861172f439048d7ca3e4cc7a
+  - enabled: 1
+    path: Assets/Scenes/Scene 1 - New Island.unity
+    guid: 0b49e1559f9766c42b70412c92181d50
+  - enabled: 1
+    path: Assets/Scenes/MazeRavine.unity
+    guid: 2c36b7d41056dd144a75a3b5fa06d43f
   m_configObjects: {}
